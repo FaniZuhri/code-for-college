@@ -1,31 +1,27 @@
 package UAS;
-// Java Program to Illustrate Application CLass
-// To Create The Menu For the Program
 
-// Importing required classes
 import java.util.Scanner;
 
 // Class
 public class Main {
 
 	// Main driver method
-	public static void main(String[] args)
-	{
-		// Creating object of Scanner class
+	public static void main(String[] args) {
+		// Creating listBookject of Scanner class
 		// to take input from user
 		try (Scanner input = new Scanner(System.in)) {
 			// Displaying menu
 			System.out.println(
-				"********************Welcome to the GFG Library!********************");
+					"********************Welcome to the Library!********************");
 			System.out.println(
-				"				 Select From The Following Options:			 ");
+					"				 Select From The Following Options:			 ");
 			System.out.println(
-				"**********************************************************************");
+					"**********************************************************************");
 
-			// Creating object of book class
-			Books ob = new Books();
-			// Creating object of students class
-			MemberBasic obStudent = new MemberBasic();
+			// Creating listBookject of book class
+			Books listBook = new Books();
+			// Creating listBookject of Members class
+			Members listMember = new Members();
 
 			int choice;
 			int searchChoice;
@@ -34,41 +30,61 @@ public class Main {
 			// using do-while loop
 			do {
 
-				ob.dispMenu();
+				listBook.dispMenu();
+				System.out.print("\nUser Input: ");
 				choice = input.nextInt();
+				System.out.println();
 
 				// Switch case
 				switch (choice) {
-				case 1 -> {
-					Book b = new Book();
-					ob.addBook(b);
-				}
-				case 2 -> ob.upgradeBookQty();
-				case 3 -> {
-					System.out.println(
-							" press 1 to Search with Book Serial No.");
-					System.out.println(
-							" Press 2 to Search with Book's Author Name.");
-					searchChoice = input.nextInt();
-					
-					// Nested switch
-					switch (searchChoice) {
-						case 1 -> ob.searchBySno();
-						case 2 -> ob.searchByAuthorName();
-					}
-					// Case
-					// Case
-				}
-				case 4 -> ob.showAllBooks();
-				case 5 -> {
-					Member s = new Member();
-					obStudent.addStudent(s);
-				}
-				case 6 -> obStudent.showAllStudents();
-				case 7 -> obStudent.checkOutBook(ob);
-				case 8 -> obStudent.checkInBook(ob);
-				default -> // Print statement
-					System.out.println("ENTER BETWEEN 0 TO 8.");
+					case 1:
+						Book b = new Book();
+						listBook.addBook(b);
+						break;
+					case 2:
+						listBook.upgradeBookQty();
+						break;
+					case 3:
+						System.out.println(
+								" press 1 to Search with Book Serial Number");
+						System.out.println(
+								" Press 2 to Search with Book's Author Name");
+						System.out.print("\nUser Input: ");
+						searchChoice = input.nextInt();
+						System.out.println();
+
+						// Nested switch
+						switch (searchChoice) {
+							case 1:
+								listBook.searchBySerialNumber();
+								break;
+							case 2:
+								listBook.searchByAuthorName();
+								break;
+						}
+						break;
+					case 4:
+						listBook.showAllBooks();
+						break;
+					case 5:
+						MemberBasic memberBasic = new MemberBasic();
+						listMember.addMember(memberBasic);
+						break;
+					case 6:
+						MemberVip memberVip = new MemberVip();
+						listMember.addMember(memberVip);
+						break;
+					case 7:
+						listMember.showAllMembers();
+						break;
+					case 8:
+						listMember.checkOutBook(listBook);
+						break;
+					case 9:
+						listMember.checkInBook(listBook);
+						break;
+					default: // Print statement
+						System.out.println("ENTER BETWEEN 0 TO 8.");
 				}
 			}
 
