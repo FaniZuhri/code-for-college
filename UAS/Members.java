@@ -54,7 +54,7 @@ public class Members {
 	// Method 3
 	// To check the Member
 	public int isMember() {
-		this.showAllMembers();
+		showAllMembers();
 		// Display message only
 		System.out.println("Enter Reg Number:");
 
@@ -89,19 +89,26 @@ public class Members {
 			System.out.println("checking out");
 			if (b != null) {
 
-				if (members[memberIndex].booksCount < members[memberIndex].maxBooksCount) {
-
-					System.out.println("adding book");
-					members[memberIndex].borrowedBooks[members[memberIndex].booksCount] = b;
-					members[memberIndex].booksCount++;
-
-					return;
-				} else {
-
+				if (members[memberIndex].booksCount > members[memberIndex].maxBooksCount) {
 					System.out.println(
 							"Member Can not Borrow more than " + (members[memberIndex].maxBooksCount) + " Books.");
 					return;
 				}
+
+				for (int i = 0; i < members[memberIndex].booksCount; i++){
+					if (members[memberIndex].borrowedBooks[i].serialNumber == b.serialNumber){
+						System.out.println("Same books has been borrowed!");
+						book.checkInBook(b);
+						return;
+					}
+
+				}
+
+				System.out.println("adding book");
+				members[memberIndex].borrowedBooks[members[memberIndex].booksCount] = b;
+				members[memberIndex].booksCount++;
+
+				return;
 			}
 			System.out.println("Book is not Available.");
 		}
@@ -137,6 +144,7 @@ public class Members {
 				if (serialNumber == s.borrowedBooks[i].serialNumber) {
 					book.checkInBook(s.borrowedBooks[i]);
 					s.borrowedBooks[i] = null;
+					s.booksCount -= 1;
 
 					return;
 				}
