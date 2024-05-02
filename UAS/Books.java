@@ -1,5 +1,5 @@
 package UAS;
-// Importing required classes
+
 import java.util.Scanner;
 
 // CLass
@@ -13,15 +13,14 @@ public class Books {
 
 	// Method 1
 	// To compare Books
-	public int compareBookObjects(Book b1, Book b2)
-	{
+	public int compareBookObjects(Book b1, Book b2) {
 
 		// If Book name matches
 		if (b1.bookName.equalsIgnoreCase(b2.bookName)) {
 
 			// Printing Book exists
 			System.out.println(
-				"Book of this Name Already Exists.");
+					"Book of this Name Already Exists.");
 			return 0;
 		}
 
@@ -30,7 +29,7 @@ public class Books {
 
 			// Print Book exists
 			System.out.println(
-				"Book of this Serial No Already Exists.");
+					"Book of this Serial No Already Exists.");
 
 			return 0;
 		}
@@ -39,13 +38,11 @@ public class Books {
 
 	// Method 2
 	// To add Book
-	public void addBook(Book b)
-	{
+	public void addBook(Book b) {
 
 		for (int i = 0; i < count; i++) {
 
-			if (this.compareBookObjects(b, this.theBooks[i])
-				== 0)
+			if (this.compareBookObjects(b, this.theBooks[i]) == 0)
 				return;
 		}
 
@@ -53,22 +50,20 @@ public class Books {
 
 			theBooks[count] = b;
 			count++;
-		}
-		else {
+		} else {
 
 			System.out.println(
-				"No Space to Add More Books.");
+					"No Space to Add More Books.");
 		}
 	}
 
 	// Method 3
 	// To search Book by serial number
-	public void searchBySno()
-	{
+	public void searchBySerialNumber() {
 
 		// Display message
 		System.out.println(
-			"\t\t\t\tSEARCH BY SERIAL NUMBER\n");
+				"\t\t\t\tSEARCH BY SERIAL NUMBER\n");
 
 		// Class data members
 		int serialNumber;
@@ -77,33 +72,32 @@ public class Books {
 
 		int flag = 0;
 		System.out.println(
-			"S.No\t\tName\t\tAuthor\t\tAvailable Qty\t\tTotal Qty");
+				"S.Num\t\tName\t\tAuthor\t\tAvailable Qty\t\tTotal Qty");
 
 		for (int i = 0; i < count; i++) {
 			if (serialNumber == theBooks[i].serialNumber) {
 				System.out.println(
-					theBooks[i].serialNumber + "\t\t"
-					+ theBooks[i].bookName + "\t\t"
-					+ theBooks[i].authorName + "\t\t"
-					+ theBooks[i].bookQtyCopy + "\t\t"
-					+ theBooks[i].bookQty);
+						theBooks[i].serialNumber + "\t\t"
+								+ theBooks[i].bookName + "\t\t"
+								+ theBooks[i].authorName + "\t\t"
+								+ theBooks[i].bookQtyCopy + "\t\t"
+								+ theBooks[i].bookQty);
 				flag++;
 				return;
 			}
 		}
 		if (flag == 0)
 			System.out.println("No Book for Serial No "
-							+ serialNumber + " Found.");
+					+ serialNumber + " Found.");
 	}
 
 	// Method 4
 	// To search author by name
-	public void searchByAuthorName()
-	{
+	public void searchByAuthorName() {
 
 		// Display message
 		System.out.println(
-			"\t\t\t\tSEARCH BY AUTHOR'S NAME");
+				"\t\t\t\tSEARCH BY AUTHOR'S NAME");
 
 		input.nextLine();
 
@@ -113,7 +107,7 @@ public class Books {
 		int flag = 0;
 
 		System.out.println(
-			"S.No\t\tName\t\tAuthor\t\tAvailable Qty\t\tTotal Qty");
+				"S.Num\t\tName\t\tAuthor\t\tAvailable Qty\t\tTotal Qty");
 
 		for (int i = 0; i < count; i++) {
 
@@ -123,11 +117,11 @@ public class Books {
 
 				// Print below corresponding credentials
 				System.out.println(
-					theBooks[i].serialNumber + "\t\t"
-					+ theBooks[i].bookName + "\t\t"
-					+ theBooks[i].authorName + "\t\t"
-					+ theBooks[i].bookQtyCopy + "\t\t"
-					+ theBooks[i].bookQty);
+						theBooks[i].serialNumber + "\t\t"
+								+ theBooks[i].bookName + "\t\t"
+								+ theBooks[i].authorName + "\t\t"
+								+ theBooks[i].bookQtyCopy + "\t\t"
+								+ theBooks[i].bookQty);
 				flag++;
 			}
 		}
@@ -135,36 +129,34 @@ public class Books {
 		// Else no Book matches for author
 		if (flag == 0)
 			System.out.println("No Books of " + authorName
-							+ " Found.");
+					+ " Found.");
 	}
 
 	// Method 5
 	// To display all Books
-	public void showAllBooks()
-	{
+	public void showAllBooks() {
 
 		System.out.println("\t\t\t\tSHOWING ALL BOOKS\n");
 		System.out.println(
-			"S.No\t\tName\t\tAuthor\t\tAvailable Qty\t\tTotal Qty");
+				"S.Num\t\tName\t\tAuthor\t\tAvailable Qty\t\tTotal Qty");
 
 		for (int i = 0; i < count; i++) {
 
 			System.out.println(
-				theBooks[i].serialNumber + "\t\t"
-				+ theBooks[i].bookName + "\t\t"
-				+ theBooks[i].authorName + "\t\t"
-				+ theBooks[i].bookQtyCopy + "\t\t"
-				+ theBooks[i].bookQty);
+					theBooks[i].serialNumber + "\t\t"
+							+ theBooks[i].bookName + "\t\t"
+							+ theBooks[i].authorName + "\t\t"
+							+ theBooks[i].bookQtyCopy + "\t\t"
+							+ theBooks[i].bookQty);
 		}
 	}
 
 	// Method 6
 	// To edit the Book
-	public void upgradeBookQty()
-	{
+	public void upgradeBookQty() {
 
 		System.out.println(
-			"\t\t\t\tUPGRADE QUANTITY OF A BOOK\n");
+				"\t\t\t\tUPGRADE QUANTITY OF A BOOK\n");
 		System.out.println("Enter Serial No of Book");
 
 		int serialNumber = input.nextInt();
@@ -175,7 +167,7 @@ public class Books {
 
 				// Display message
 				System.out.println(
-					"Enter No of Books to be Added:");
+						"Enter No of Books to be Added:");
 
 				int addingQty = input.nextInt();
 				theBooks[i].bookQty += addingQty;
@@ -188,38 +180,37 @@ public class Books {
 
 	// Method 7
 	// To create menu
-	public void dispMenu()
-	{
+	public void dispMenu() {
 
 		// Displaying menu
 		System.out.println(
-			"----------------------------------------------------------------------------------------------------------");
+				"----------------------------------------------------------------------------------------------------------");
 		System.out.println("Press 1 to Add new Book.");
 		System.out.println("Press 0 to Exit Application.");
 		System.out.println(
-			"Press 2 to Upgrade Quantity of a Book.");
+				"Press 2 to Upgrade Quantity of a Book.");
 		System.out.println("Press 3 to Search a Book.");
 		System.out.println("Press 4 to Show All Books.");
-		System.out.println("Press 5 to Register Student.");
+		System.out.println("Press 5 to Register Member Basic.");
+		System.out.println("Press 6 to Register Member VIP.");
 		System.out.println(
-			"Press 6 to Show All Registered Students.");
-		System.out.println("Press 7 to Check Out Book. ");
-		System.out.println("Press 8 to Check In Book");
+				"Press 7 to Show All Registered Members.");
+		System.out.println("Press 8 to Check Out Book. ");
+		System.out.println("Press 9 to Check In Book");
 		System.out.println(
-			"-------------------------------------------------------------------------------------------------------");
+				"-------------------------------------------------------------------------------------------------------");
 	}
 
 	// Method 8
 	// To search the library
-	public int isAvailable(int serialNumber)
-	{
+	public int isAvailable(int serialNumber) {
 
 		for (int i = 0; i < count; i++) {
 			if (serialNumber == theBooks[i].serialNumber) {
 				if (theBooks[i].bookQtyCopy > 0) {
 
 					System.out.println(
-						"Book is Available.");
+							"Book is Available.");
 					return i;
 				}
 				System.out.println("Book is Unavailable");
@@ -228,17 +219,16 @@ public class Books {
 		}
 
 		System.out.println("No Book of Serial Number "
-						+ " Available in Library.");
+				+ " Available in Library.");
 		return -1;
 	}
 
 	// Method 9
 	// To remove the Book from the library
-	public Book checkOutBook()
-	{
+	public Book checkOutBook() {
 
 		System.out.println(
-			"Enter Serial No of Book to be Checked Out.");
+				"Enter Serial No of Book to be Checked Out.");
 		int serialNumber = input.nextInt();
 
 		int bookIndex = isAvailable(serialNumber);
@@ -252,8 +242,7 @@ public class Books {
 
 	// Method 10
 	// To add the Book to the Library
-	public void checkInBook(Book b)
-	{
+	public void checkInBook(Book b) {
 		for (int i = 0; i < count; i++) {
 			if (b.equals(theBooks[i])) {
 				theBooks[i].bookQtyCopy++;
